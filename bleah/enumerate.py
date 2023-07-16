@@ -49,7 +49,7 @@ def is_mostly_printable(s):
     pr  = 0
 
     for c in s:
-        if c in string.printable:
+        if c in bytes(string.printable, "ascii"):
             pr += 1
 
     return ( pr / float(tot) ) >= 0.75
