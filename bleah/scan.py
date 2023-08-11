@@ -250,7 +250,7 @@ class ScanReceiver(DefaultDelegate):
             elif tag in [8, 9]:
                 try:
                     self.devdata[dev.addr][desc] = val.decode('utf-8')
-                except UnicodeEncodeError:
+                except (UnicodeEncodeError, AttributeError) as e:
                     self.devdata[dev.addr][desc] = repr(val)
             else:
                 self.devdata[dev.addr][desc] = repr(val)
